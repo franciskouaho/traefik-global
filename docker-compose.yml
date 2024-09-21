@@ -11,10 +11,7 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
       - "--certificatesresolvers.myresolver.acme.email=kouahofrancis@gmail.com"
-      - "--certificatesresolvers.myresolver.acme.caserver=https://acme.zerossl.com/v2/DV90"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=zerossl"
-      - "--certificatesresolvers.myresolver.acme.dnschallenge.resolvers=8.8.8.8:53,8.8.4.4:53"
     ports:
       - "80:80"
       - "443:443"
