@@ -12,6 +12,7 @@ services:
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
       - "--certificatesresolvers.myresolver.acme.email=kouahofrancis@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--providers.file.filename=/dynamic_conf.yml"
     ports:
       - "80:80"
       - "443:443"
@@ -19,6 +20,7 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./letsencrypt:/letsencrypt"
+      - "./dynamic_conf.yml:/dynamic_conf.yml"
     networks:
       - traefik_network
 
