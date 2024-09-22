@@ -2,31 +2,17 @@ http:
   middlewares:
     corsHeaders:
       headers:
-        accessControlAllowOrigin: "*"
+        accessControlAllowOriginList:
+          - "https://emplica.fr"
         accessControlAllowMethods:
           - "GET"
-          - "POST"
-          - "PUT"
-          - "DELETE"
           - "OPTIONS"
+          - "PUT"
+          - "POST"
+          - "DELETE"
         accessControlAllowHeaders:
+          - "Origin"
           - "Content-Type"
+          - "Accept"
           - "Authorization"
         accessControlAllowCredentials: true
-
-  routers:
-    my-api:
-      rule: "Host(`api.emplica.fr`)"
-      entryPoints:
-        - websecure
-      service: my-api-service
-      middlewares:
-        - corsHeaders
-      tls:
-        certResolver: myresolver
-
-  services:
-    my-api-service:
-      loadBalancer:
-        servers:
-          - url: "http://backend:8000"
